@@ -16,11 +16,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
+    // authenticate username and password
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
 
+    //set controller path to each role - user should have this specific role to access these path
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
